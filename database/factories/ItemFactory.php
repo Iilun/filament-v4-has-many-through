@@ -17,7 +17,6 @@ class ItemFactory extends Factory
     public function definition(): array
     {
         return [
-            'through_id' => $this->faker->numberBetween(1, 10),
             'name' => $this->faker->name,
         ];
     }
