@@ -41,6 +41,7 @@ php artisan migrate --seed
 Checkout the `v3` branch.
 
 ```shell
+composer install
 php artisan serve
 ```
 
@@ -55,6 +56,7 @@ Checkout the `v4` branch.
 Clear the views if needed.
 
 ```shell
+composer install
 php artisan view:clear
 php artisan serve
 ```
