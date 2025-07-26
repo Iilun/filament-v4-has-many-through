@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Models\Item;
 use App\Models\Through;
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,8 +19,34 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
-        Through::factory(10)->create();
+        // Creating two throughs for user 1
 
-        Item::factory(20)->create();
+        Through::factory(2)->create([
+            'user_id' => 1
+        ]);
+
+        // Creating other throughs that should not be seen
+
+        Through::factory(2)->create([
+            'user_id' => 2
+        ]);
+
+        // Creating 6 records that should be seen
+
+        Item::factory(3)->create(
+            ['through_id' => 1]
+        );
+        Item::factory(3)->create(
+            ['through_id' => 2]
+        );
+
+        // Creating 20 records that should not be seen
+
+        Item::factory(10)->create(
+            ['through_id' => 3]
+        );
+        Item::factory(10)->create(
+            ['through_id' => 4]
+        );
     }
 }
